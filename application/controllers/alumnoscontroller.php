@@ -14,9 +14,15 @@ class alumnoscontroller extends  AbstractController{
 	*Lista de alumnos
 	*/
 	public function index(){
-		$this->load->view('alumnos/index.php');
+		$this->load->model('alumno');
+		$busqueda = $this->alumno->obtenerTodosRegistros();
+		$datos = array('titulo' => 'Listado de Usuario',
+						'busquedaAlumno' => $busqueda,);
+		$this->load->view('alumnos/index.php',$datos);
 	}
 
-
+	public function crear(){
+		$this->load->view('alumnos/crear.php');
+	}
 
 }
